@@ -8,14 +8,14 @@
 ;(face-attribute 'default :font)
 
 (defun xresources-color-name (color)
-  "Return hex representation of COLOR."
+  "Return rgb hex representation of COLOR."
 
   (let ((decimal (mapcar (lambda (x) (/ x 256)) (color-values color))))
     (print decimal)
-    (list (format "#%02x%02x%02x"
-                  (nth 0 decimal)
-                  (nth 1 decimal)
-                  (nth 2 decimal)))))
+    (format "#%02x%02x%02x"
+            (nth 0 decimal)
+            (nth 1 decimal)
+            (nth 2 decimal))))
 
 (defalias 'xresources-color-face 'face-attribute)
 
@@ -46,7 +46,8 @@
                             (cons "*.color14" (xresources-color-name "cyan1"))
                             ;;; white
                             (cons "*.color7" (xresources-color-name "white smoke"))
-                            (cons "*.color15" (xresources-color-name "white"))))
+                            (cons "*.color15" (xresources-color-name "white"))
+                            ))
 
 (defun hash-keys (hash)
   "Return keys of HASH."
